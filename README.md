@@ -14,8 +14,8 @@ mkdir -p modules</code><span class="s1">/br/com/redhat/senhasegura/main</span></
 <p>&lt;/dependencies&gt;<br />&lt;/module&gt;</p>
 <h3>&nbsp;</h3>
 <h3>Configure the security domain to use the custom login module (standalone or domain)</h3>
-<p>&lt;subsystem xmlns="urn:jboss:domain:security:1.2"&gt;<br /> &lt;security-domains&gt;<br /> &lt;security-domain name="jmx-console" cache-type="default"&gt;<br /> &lt;authentication&gt;<br /> &lt;!-- FIXME: notice the 'module' attribute --&gt;<br /> &lt;login-module module="org.jboss.example" code="com.redhat.senhasegura.CustomLoginModule" flag="required"/&gt;<br /> &lt;/authentication&gt;<br /> &lt;/security-domain&gt;<br /> &lt;/security-domains&gt;<br /> &lt;/subsystem&gt;</p>
-<p>&nbsp;</p>
+<p>Add inside within security domains within subsystem</p>
+<p><br /> &lt;security-domain name="senhasegura" cache-type="default"&gt;<br /> &lt;authentication&gt;<br /> &lt;login-module module="com.redhat.senhasegura" code="com.redhat.senhasegura.CustomLoginModule" flag="required"/&gt;<br /> &lt;/authentication&gt;<br /> &lt;/security-domain&gt;<br /> &nbsp;</p>
 <h3>configuring data source with jboss-cli for use in vdb</h3>
 <p>/subsystem=datasources/data-source=mysql-ds:add(jndi-name=java:/MysqlDS, driver-name=mysql8.jar, connection-url=jdbc:mysql://${SENHASEGURA_HOSTNAME}:${SENHASEGURA_PORT}/test,user-name=${SENHASEGURA_USERNAME}, password=${SENHASEGURA_PASSWORD}) <br />/subsystem=datasources/data-source=mysql-ds:enable</p>
 <h3>Deploy module</h3>
