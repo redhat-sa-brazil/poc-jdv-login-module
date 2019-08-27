@@ -15,7 +15,14 @@ mkdir -p modules</code><span class="s1">/br/com/redhat/senhasegura/main</span></
 <h3>&nbsp;</h3>
 <h3>Configure the security domain to use the custom login module (standalone or domain)</h3>
 <p>Add inside within security domains within subsystem</p>
-<p><br /> &lt;security-domain name="senhasegura" cache-type="default"&gt;<br /> &lt;authentication&gt;<br /> &lt;login-module module="com.redhat.senhasegura" code="com.redhat.senhasegura.CustomLoginModule" flag="required"/&gt;<br /> &lt;/authentication&gt;<br /> &lt;/security-domain&gt;<br /> &nbsp;</p>
+```[xml]
+<security-domain name="senhasegura" cache-type="default">
+<authentication>
+<login-module module="com.redhat.senhasegura" code="com.redhat.senhasegura.CustomLoginModule" flag="required"/>
+</authentication>
+</security-domain>
+```
+
 <h3>configuring data source with jboss-cli for use in vdb</h3>
 
 ```
