@@ -18,11 +18,11 @@ mkdir -p modules</code><span class="s1">/br/com/redhat/senhasegura/main</span></
 <p><br /> &lt;security-domain name="senhasegura" cache-type="default"&gt;<br /> &lt;authentication&gt;<br /> &lt;login-module module="com.redhat.senhasegura" code="com.redhat.senhasegura.CustomLoginModule" flag="required"/&gt;<br /> &lt;/authentication&gt;<br /> &lt;/security-domain&gt;<br /> &nbsp;</p>
 <h3>configuring data source with jboss-cli for use in vdb</h3>
 
-``
+```
 /subsystem=datasources/data-source=mysql-ds:add(jndi-name=java:/MysqlDS, driver-name=mysql8.jar, connection-url=jdbc:mysql://${SENHASEGURA_HOSTNAME}:${SENHASEGURA_PORT}/test,user-name=${SENHASEGURA_USERNAME}, password=${SENHASEGURA_PASSWORD})
 
 /subsystem=datasources/data-source=mysql-ds:enable
-``
+```
 
 <h3>Deploy module</h3>
 <p>mvn package</p>
