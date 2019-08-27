@@ -10,8 +10,6 @@ import javax.security.auth.login.LoginException;
 import org.jboss.security.SimpleGroup;
 import org.jboss.security.SimplePrincipal;
 import org.jboss.security.auth.spi.UsernamePasswordLoginModule;
-
-import br.com.sulamerica.senhasegura.properties.Configuration;
  
   
 public class CustomLoginModule extends UsernamePasswordLoginModule {
@@ -22,8 +20,7 @@ public class CustomLoginModule extends UsernamePasswordLoginModule {
  
         super.initialize(subject, callbackHandler, sharedState, options);
         
-        log.info("Initiating connection with secure password service: " + Configuration.getURL());
-        log.info("Token expiration will be on: " + Configuration.getEXPIRE_TOKEN());
+      
     }
  
     /**
@@ -39,7 +36,10 @@ public class CustomLoginModule extends UsernamePasswordLoginModule {
  
         System.out.format("MyLoginModule: authenticating user '%s'\n", getUsername());
  
-        // Lets pretend we got the password from somewhere and that it's, by a chance, same as the username
+        /*
+         * Valor senha segura
+         * 
+         */
  
         String password = super.getUsername();
  
